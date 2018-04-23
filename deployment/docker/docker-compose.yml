@@ -1,0 +1,18 @@
+version: '3'
+services:
+  zookeeper:
+    image: zookeeper:3.4
+    restart: always
+    hostname: zookeeper
+    expose:
+      - 2181
+
+  kafka:
+    image: registry.cn-hangzhou.aliyuncs.com/htsec/titan_kafka
+    hostname: kafka
+    depends_on:
+      - zookeeper
+    expose:
+      - 9092
+    links:
+      - zookeeper:zookeeper
