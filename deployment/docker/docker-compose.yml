@@ -16,3 +16,32 @@ services:
       - 9092
     links:
       - zookeeper:zookeeper
+
+  jobmanager:
+    image: flink:1.4
+    depends_on:
+      - kafka
+    expose:
+      - "6123"
+    ports:
+      - "8081:8081"
+    command: jobmanager
+    environment:
+      - JOB_MANAGER_RPC_ADDRESS=jobmanager
+    links:
+      - kafka:kafka
+
+  taskmanager:
+    image: flink:1.4
+    expose:
+      - "6121"
+      - "6122"
+    depends_on:
+      - jobmanager
+    command: taskmanager
+    links:
+      - "jobmanager:jobmanager"
+    environment:
+      - JOB_MANAGER_RPC_ADDRESS=jobmanager
+    links:
+      - kafka:kafka
