@@ -9,6 +9,8 @@ RUN sed -i "31clisteners=PLAINTEXT://:9092" /kafka_2.11-1.0.0/config/server.prop
 	&& sed -i "36aadvertised.listeners=PLAINTEXT://kafka:9092" /kafka_2.11-1.0.0/config/server.properties \
 	&& sed -i "36aadvertised.host.name=kafka" /kafka_2.11-1.0.0/config/server.properties \
 	&& sed -i "36ahost.name=kafka" /kafka_2.11-1.0.0/config/server.properties
+ADD create_topics.sh /create_topics.sh
+RUN chmod +x /create_topics.sh
 WORKDIR /kafka_2.11-1.0.0
 EXPOSE 9092
 CMD ["supervisord", "--nodaemon", "--configuration", "/etc/supervisor/supervisord.conf"]
