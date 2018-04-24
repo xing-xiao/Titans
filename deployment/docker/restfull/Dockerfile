@@ -10,6 +10,6 @@ RUN mkdir /opt/jars/ && wget -P /opt/jars/ https://github.com/xing-xiao/Titans/r
 WORKDIR /Titans/src/restfull/
 COPY docker-entrypoint.sh /
 ENTRYPOINT ["/docker-entrypoint.sh"]
-EXPOST 9527
+EXPOSE 9527
 CMD ["python3", "run.py"]
 

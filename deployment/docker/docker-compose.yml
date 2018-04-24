@@ -48,5 +48,18 @@ services:
     links:
       - kafka:kafka
 
+  restfull:
+    image: registry.cn-hangzhou.aliyuncs.com/htsec/titan_restfull
+    ports:
+      - 9527:9527
+    depends_on:
+      - jobmanager
+    command: ["python3", "run.py"]
+    links:
+      - kafka:kafka
+      - jobmanager:jobmanager
+    volumes:
+      - titans:/titans
+
 volumes:
   titans:
