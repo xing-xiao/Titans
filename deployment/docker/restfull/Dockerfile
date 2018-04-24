@@ -5,7 +5,7 @@ RUN apk add wget curl gcc curl-dev musl-dev python3-dev openssl-dev
 ADD requirements.txt /requirements.txt
 RUN pip3 install -r /requirements.txt
 RUN wget https://github.com/xing-xiao/Titans/archive/0.1.tar.gz \
-  && tar zxvf Titans-0.1.tar.gz
+  && ls -l && tar zxvf 0.1.tar.gz
 RUN mkdir /opt/jars/ && wget -P /opt/jars/ https://github.com/xing-xiao/Titans/releases/download/0.1/TsapCEPEngine-assembly-0.1.jar
 WORKDIR /Titans/src/restfull/
 COPY docker-entrypoint.sh /

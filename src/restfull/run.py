@@ -1,6 +1,6 @@
 import requests
 from flask import Flask
-from flask.ext.restful import Api, Resource, reqparse
+from flask.ext.restful import Api
 from api_tasks import APITasks, APITaskUpload, APITaskRun
 
 
