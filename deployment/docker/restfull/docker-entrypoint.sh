@@ -6,3 +6,5 @@ sleep 30
 
 curl -XPOST ${FLINK_SERVER}jars/upload -H "Expect:" -F "jarfile=@${JAR_PATH}TsapCEPEngine-assembly-0.1.jar" > ${JAR_PATH}jar.id
 
+python3 run.py
+
