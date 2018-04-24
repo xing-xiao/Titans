@@ -1,11 +1,12 @@
 FROM python:3.6.5-alpine3.7
 MAINTAINER xiao_xing <xingxiao@htsc.com>
 RUN apk update
-RUN apk add wget curl gcc curl-dev musl-dev python3-dev openssl-dev git
+RUN apk add wget curl gcc curl-dev musl-dev python3-dev openssl-dev
 ADD requirements.txt /requirements.txt
 RUN pip3 install -r /requirements.txt
-RUN git clone https://github.com/xing-xiao/Titans.git
-ADD TsapCEPEngine-assembly-0.1.jar /opt/jars/TsapCEPEngine.jar
+RUN wget https://github.com/xing-xiao/Titans/archive/0.1.tar.gz \
+  && tar zxvf Titans-0.1.tar.gz
+RUN mkdir /opt/jars/ && wget -P /opt/jars/ https://github.com/xing-xiao/Titans/releases/download/0.1/TsapCEPEngine-assembly-0.1.jar
 WORKDIR /Titans/src/restfull/
 COPY docker-entrypoint.sh /
 ENTRYPOINT ["/docker-entrypoint.sh"]
