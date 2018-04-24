@@ -7,7 +7,7 @@ RUN pip3 install -r /requirements.txt
 RUN wget https://github.com/xing-xiao/Titans/archive/0.1.tar.gz \
   && tar zxvf 0.1.tar.gz
 RUN mkdir /run/jars/ && wget -P /run/jars/ https://github.com/xing-xiao/Titans/releases/download/0.1/TsapCEPEngine-assembly-0.1.jar
-WORKDIR /Titans/src/restfull/
+WORKDIR /Titans-0.1/src/restfull/
 COPY docker-entrypoint.sh /
 RUN chmod +x /docker-entrypoint.sh
 EXPOSE 9527
