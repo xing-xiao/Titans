@@ -7,7 +7,7 @@ from flask import jsonify
 from flask import request
 
 jar_dir = "/run/jars/"
-root_dir = "/tmp/"
+rule_dir = "/titans/"
 
 
 def get_jar_id():
@@ -71,7 +71,7 @@ class APITaskUpload(Resource):
             return jsonify({'failed': 'only yml file accepted'})
         if 'title' not in yml:
             return jsonify({'failed': 'title needed'})
-        newf = os.path.join(root_dir, yml['title'] + '.yml')
+        newf = os.path.join(rule_dir, yml['title'] + '.yml')
         if os.path.isfile(newf):
             return jsonify({'failed': 'rule <%s> exists' % yml['title']})
         with open(newf, 'wb')as f:
@@ -81,15 +81,15 @@ class APITaskUpload(Resource):
 
 class APITaskRun(Resource):
     def post(self, name):
-        if not os.path.isfile(os.path.join(root_dir, name + '.yml')):
+        if not os.path.isfile(os.path.join(rule_dir, name + '.yml')):
             return jsonify({'failed': 'rule <%s> dose not exists' % name})
         jarid = "123"
         url = "http://jobmanager:8081/jars/%s/run?" \
               "allowNonRestoredState=false" \
               "&entry-class=" \
               "&parallelism=" \
-              "&program-args=--kafka.brokers+kafka:9092+--kafka.input.topics+tsap+--kafka.output.topics+alarm+--window.time+100" \
-              "&savepointPath=" % cep_jarid
+              "&program-args=--kafka.brokers+kafka:9092+--kafka.input.topics+tsap+--kafka.output.topics+alarm+--rule.path+%s" \
+              "&savepointPath=" % (cep_jarid, os.path.join(rule_dir, name)+'.yml')
         data = {}
         requests.post(url=url, data=data)
         return jsonify({'success': 'rule <%s> started' % name})
