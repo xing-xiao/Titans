@@ -1,6 +1,6 @@
 #!/bin/sh
 FLINK_SERVER=http://jobmanager:8081/
-JAR_PATH=/opt/jars/
+JAR_PATH=/run/jars/
 
 sleep 30
 

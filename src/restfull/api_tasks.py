@@ -6,7 +6,7 @@ from flask.ext.restful import reqparse, abort, Resource
 from flask import jsonify
 from flask import request
 
-jar_dir = "/tmp"
+jar_dir = "/run/jars/"
 root_dir = "/tmp/"
 
 
