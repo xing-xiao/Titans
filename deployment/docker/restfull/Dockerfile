@@ -9,6 +9,7 @@ RUN wget https://github.com/xing-xiao/Titans/archive/0.1.tar.gz \
 RUN mkdir /run/jars/ && wget -P /run/jars/ https://github.com/xing-xiao/Titans/releases/download/0.1/TsapCEPEngine-assembly-0.1.jar
 WORKDIR /Titans/src/restfull/
 COPY docker-entrypoint.sh /
+RUN chmod +x /docker-entrypoint.sh
 ENTRYPOINT ["/docker-entrypoint.sh"]
 EXPOSE 9527
 CMD ["python3", "run.py"]
