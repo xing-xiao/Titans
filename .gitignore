@@ -1,5 +1,6 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
+deployment/docker/restfull/src/__pycache__/
 *.py[cod]
 *$py.class
 
@@ -101,6 +102,5 @@ venv.bak/
 /site
 
 # idea
-.idea/
-src/restfull/.idea/
+deployment/docker/restfull/src/.idea/
 
