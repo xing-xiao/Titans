@@ -6,15 +6,18 @@
 Welcome to titans's documentation!
 ==================================
 
+blablabla...
+
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: Table of Contents:
 
+   overview
+   quickstart
+   deployment
+   collector
+   cep_engine
+   ti_engine
+   monitoring
+   examples
 
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
