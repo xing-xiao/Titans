@@ -83,7 +83,6 @@ class APITaskRun(Resource):
     def post(self, name):
         if not os.path.isfile(os.path.join(rule_dir, name + '.yml')):
             return jsonify({'failed': 'rule <%s> dose not exists' % name})
-        jarid = "123"
         url = "http://jobmanager:8081/jars/%s/run?" \
               "allowNonRestoredState=false" \
               "&entry-class=" \
